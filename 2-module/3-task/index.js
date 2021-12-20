@@ -3,16 +3,17 @@ let calculator = {
   firstDigit: 0,
   secondDigit: 0,
   read(a, b) {
-    firstDigit = a;
-    secondDigit = b;
+    this.firstDigit = a;
+    this.secondDigit = b;
   },
   sum() {
-    return firstDigit + secondDigit;
+    return this.firstDigit + this.secondDigit;
   },
   mul() {
-    return firstDigit * secondDigit;
+    return this.firstDigit * this.secondDigit;
   }
 };
 
 // НЕ УДАЛЯТЬ СТРОКУ, НУЖНА ДЛЯ ПРОВЕРКИ
 window.calculator = calculator; // делает ваш калькулятор доступным глобально
+
