@@ -9,6 +9,9 @@
 ```js
 let calculator = {
   // ... ваш код ...
+  name: "Джон",
+  age: 30
+
 };
 
 calculator.read(3, 5);
