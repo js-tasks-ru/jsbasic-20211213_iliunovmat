@@ -26,7 +26,7 @@ function initCarousel() {
     }
   }
   disableArrows();
-// move to the left via addition of  currentCoordinates of x  and width of slide 
+  // move to the left via addition of  currentCoordinates of x  and width of slide 
   function moveRight() {
     currentCoordinates = currentCoordinates + slideWidth;
     innerCarousel.style.transform = `translateX(-${currentCoordinates}px)`;
