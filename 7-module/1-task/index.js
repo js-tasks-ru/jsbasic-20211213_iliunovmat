@@ -39,13 +39,14 @@ export default class RibbonMenu {
     this.ribbonMenu.querySelector(".ribbon__arrow_left").addEventListener("click", this.moveLeft);
     
     let nav = this.ribbonMenu.querySelector(".ribbon__inner"); 
-    console.log(nav.querySelectorAll(".ribbon__item"));
-
+    //add listeners for each menu chip
     nav.querySelectorAll(".ribbon__item").forEach(item => {
       item.addEventListener("click", function(e) {
+        //remove attr from all elements
         nav.querySelectorAll(".ribbon__item").forEach(item1 => {
           item1.classList.remove("ribbon__item_active");
         });
+        //add active attr to the current element
         e.target.classList.add("ribbon__item_active");
 
         let custEvent = new CustomEvent('ribbon-select', { // имя события должно быть именно 'ribbon-select'
@@ -53,8 +54,8 @@ export default class RibbonMenu {
           bubbles: true // это событие всплывает - это понадобится в дальнейшем
         });
         
-        
-        this.dispatchEvent(custEvent);
+        e.preventDefault();
+        e.target.dispatchEvent(custEvent);
       });
     });
   }
