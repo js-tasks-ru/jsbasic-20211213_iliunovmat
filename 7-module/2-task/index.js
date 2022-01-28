@@ -27,27 +27,27 @@ export default class Modal {
       </div>
       `
     );
-    this.modalWindow.querySelector(".modal__close").addEventListener("click", this.close);
-    document.addEventListener('keydown', function(event) {
-      if (event.code == 'Escape') {
-        if (document.body.querySelector(".modal") !== null) {
-          document.body.classList.remove(`is-modal-open`);
-          document.body.querySelector(".modal").remove();
-        }
-        
-      }
-    });
+    
   }
 
   open () {
     document.body.classList.add(`is-modal-open`);
     document.body.appendChild(this.modalWindow);
 
+    this.modalWindow.querySelector(".modal__close").addEventListener("click", this.close);
+    document.addEventListener('keydown', this.close);
+
   }
 
-  close () {
-    document.body.classList.remove(`is-modal-open`);
-    document.body.querySelector(".modal").remove();
+  close = (e) => {
+    if (e.code == 'Escape' || e.type == "click") {
+      if (document.body.querySelector(".modal") !== null) {
+        document.body.classList.remove(`is-modal-open`);
+        document.body.querySelector(".modal").remove();
+        this.modalWindow.querySelector(".modal__close").removeEventListener("click", this.close);
+        document.removeEventListener('keydown', this.close);
+      }
+    }
   }
 
   setTitle (modalTitle) {
