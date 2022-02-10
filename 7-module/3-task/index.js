@@ -5,11 +5,9 @@ export default class StepSlider {
     this.render();
     this.setValue(value);
     
-    
     this.elem.addEventListener("click", this.getCoordinates);
   }
   getCoordinates = (e) => {
-    
     let left = e.clientX - document.body.querySelector(".slider").getBoundingClientRect().left; 
     let leftRelative = left / document.body.querySelector(".slider").offsetWidth;
     let approximateValue = leftRelative * this.segments;
